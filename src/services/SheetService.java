@@ -18,18 +18,19 @@ public class SheetService {
     public void addValue(String address, String value) {
         Cell cell = sheet.getAllCells().get(address);
         cell.setValue(value);
-        String colIdx = String.valueOf(address.charAt(0));
-        Row row = sheet.getRows().stream().filter(it -> it.getRowId() == address.charAt(1) - '0').findFirst().get();
-        Cell rCell = row.getCell(colIdx);
-        row.setCell(colIdx, rCell);
-        Column col = sheet.getCols().stream().filter(it -> it.getColId().equals(colIdx)).findFirst().get();
-        Cell cCell = col.getCell(address.charAt(1) - '0');
-        col.setCell(address.charAt(1) - '0', cCell);
     }
 
     public String fetchValue(String address) {
         Cell cell = sheet.getAllCells().get(address);
         return cell.getValue();
+    }
+
+    public void getColumn(String colIdx) {
+        Column col = sheet.getCols().stream().filter(it -> it.getColId().equals(colIdx)).findFirst().get();
+        System.out.println("Printing columns");
+        for(Cell c : col.getCells().values()) {
+            System.out.print(c.getValue() + " ");
+        }
     }
 
     public void displayExcel() {

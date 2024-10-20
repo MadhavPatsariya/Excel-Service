@@ -7,13 +7,13 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Sheet {
-    private List<Row> rows;
-    private List<Column> cols;
+    private final List<Row> rows;
+    private final List<Column> cols;
     private int currentRow;
     private char currentCol;
     private HashMap<String, Cell> allCells;
-    private HashMap<Integer, List<Cell>> cellByRow;
-    private HashMap<String, List<Cell>> cellByCol;
+    private final HashMap<Integer, List<Cell>> cellByRow;
+    private final HashMap<String, List<Cell>> cellByCol;
 
     public Sheet() {
         this.rows = new ArrayList<>();

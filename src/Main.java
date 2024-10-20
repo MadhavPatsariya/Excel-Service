@@ -33,6 +33,9 @@ public class Main {
                 case 5:
                     doFormatting();
                     break;
+                case 6:
+                    getCellsByColumn();
+                    break;
                 default:
                     running = false;
                     break;
@@ -55,7 +58,8 @@ public class Main {
         System.out.println("3. Display Excel");
         System.out.println("4. Operation on Excel");
         System.out.println("5. Formatting");
-        System.out.println("6. Quit");
+        System.out.println("6. Get Cells by Column");
+        System.out.println("7. Quit");
     }
 
     public static void fetchValue() {
@@ -77,6 +81,12 @@ public class Main {
         String fetchInput = scanner.nextLine();
         String[] inputs = fetchInput.trim().split(" ");
         System.out.println("Result of the operation is: " + sheetService.operation(inputs[0], inputs[1], inputs[2]));
+    }
+
+    public static void getCellsByColumn() {
+        System.out.println("Enter column to fetch: ");
+        String fetchInput = scanner.nextLine();
+        sheetService.getColumn(fetchInput.trim());
     }
 
 }
